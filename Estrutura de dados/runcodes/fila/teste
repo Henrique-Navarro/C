@@ -1,0 +1,33 @@
+E AAA-0001
+E BBB-0002
+E CCC-0003
+E DDD-0004
+P XXX-XXXX
+S BBB-0002
+E EEE-0005
+S DDD-0004
+P XXX-XXXX
+
+
+-------------
+
+
+[AAA-0001][0]
+[BBB-0002][0]
+[CCC-0003][0]
+[DDD-0004][0]
+
+[AAA-0001][2]
+[CCC-0003][1]
+[EEE-0005][0]
+
+a b c d e
+tirar c
+
+lista 1
+adiciona ate achar c
+a b 
+
+lista 2
+adiciona todos depois do c
+d e
