@@ -1,9 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int soma(int num1, int num2, int num3)
+int soma(int x, int y, int z)
 {
-    
+
+    if (x >= y)
+    {
+        if (y >= z)
+        {
+            x + y;
+            x + z;
+        }
+
+        if (x < z)
+        {
+            y + z;
+            y + x;
+        }
+    }
 }
 
 int main()
