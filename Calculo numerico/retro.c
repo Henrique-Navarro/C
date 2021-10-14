@@ -63,6 +63,11 @@ int main()
 
     int *x;
     x = malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++)
+    {
+        x[i] = 0;
+    }
+
     int soma;
 
     for (int i = n; i <= 1; i--)
@@ -89,8 +94,8 @@ int main()
     */
 
     //printf("%d %d %d", x,y,z);
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        printf("%.3d\n", x[i]);
+        printf("valor: %d\n", x[i]);
     }
 }
