@@ -1,21 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+void lerA(int **matrizA, int n)
 {
-    int n;
-    scanf("%d", &n);
-
-    //esse é o código novo
-
-    int **matrizA;
-    //alocar matriz
-    matrizA = malloc(n * sizeof(int));
-    for (int i = 0; i < n; i++)
-    {
-        matrizA[i] = malloc(3 * sizeof(int));
-    }
-    //ler matriz
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -23,15 +10,56 @@ int main()
             scanf("%d", &matrizA[i][j]);
         }
     }
+}
+void imprimirA(int **matrizA, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf(" %d ", matrizA[i][j]);
+        }
+        printf("\n");
+    }
+}
 
-    int *matrizB;
-    //alocar
-    matrizB = malloc(n * sizeof(int));
-    //ler vetor
+void lerB(int *matrizB, int n)
+{
     for (int i = 0; i < n; i++)
     {
         scanf("%d", &matrizB[i]);
     }
+}
+void imprimirB(int *matrizB, int n)
+{
+    printf("\n");
+    for (int i = 0; i < n; i++)
+    {
+        printf(" %d \n", matrizB[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+
+    int **matrizA;
+    matrizA = malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++)
+    {
+        matrizA[i] = malloc(3 * sizeof(int));
+    }
+    lerA(matrizA, n);
+
+    int *matrizB;
+    matrizB = malloc(n * sizeof(int));
+    lerB(matrizB, n);
+
+    printf("\nA matriz ficou assim: \n");
+    imprimirA(matrizA, n);
+    imprimirB(matrizB, n);
 
     int *x;
     x = malloc(n * sizeof(int));
