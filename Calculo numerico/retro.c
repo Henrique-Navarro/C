@@ -17,7 +17,7 @@ void imprimirA(double **matrizA, int n)
     {
         for (int j = 1; j <= n; j++)
         {
-            printf(" %.3lf ", matrizA[i][j]);
+            printf(" %lf ", matrizA[i][j]);
         }
         printf("\n");
     }
@@ -35,7 +35,7 @@ void imprimirB(double *matrizB, int n)
 {
     for (int i = 1; i <= n; i++)
     {
-        printf(" %.3lf \n", matrizB[i]);
+        printf(" %lf \n", matrizB[i]);
     }
     printf("\n");
 }
