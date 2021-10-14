@@ -70,14 +70,14 @@ int main()
 
     int soma;
 
-    for (int i = n; i <= 1; i--)
+    for (int i = n - 1; i <= 0; i--)
     {
         soma = 0;
-        for (int j = (i + 1); j <= n; j++)
+        for (int j = n - 1; j == i; j--)
         {
-            soma = soma + matrizA[i][j] * x[j];
+            soma = (matrizA[i][j] * x[i + 1]) + soma;
         }
-        x[i] = (matrizB[i] - soma) / matrizA[i][i];
+        x[i] = matrizB[i] / (matrizA[i][i] - soma);
     }
 
     //2z= 3
