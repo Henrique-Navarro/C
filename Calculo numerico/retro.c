@@ -6,6 +6,8 @@ int main()
     int n;
     scanf("%d", &n);
 
+    //esse é o código novo
+
     int **matrizA;
     //alocar matriz
     matrizA = malloc(n * sizeof(int));
