@@ -61,12 +61,6 @@ int main()
     printf("\nA matrizB ficou assim: \n");
     imprimirB(matrizB, n);
 
-    /*printf("\nA matrizA ficou assim: \n");
-    imprimirA(matrizA, n);
-
-    printf("\nA matrizB ficou assim: \n");
-    imprimirB(matrizB, n);*/
-
     double *x;
     x = malloc(n * sizeof(double));
     for (int i = 1; i <= n; i++)
