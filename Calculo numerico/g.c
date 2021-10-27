@@ -64,40 +64,15 @@ double *alocaB(int n)
     return matrizB;
 }
 
-void printarAumentada(double **matrizAumentada, int n)
+void imprimir(double **matrizA, int n)
 {
-    printf("Matriz aumentada\n");
-    for (int j, i = 1; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (j = 1; j <= n + 1; j++)
+        for (int j = 0; j <= n; j++)
         {
-            printf(" %f ", matrizAumentada[i][j]);
+            printf("%f", matrizA[i][j]);
         }
-        printf("\n");
     }
-}
-double **alocaAumentada(int n, double **matrizA, double *matrizB)
-{
-    double **matrizAumentada;
-    matrizAumentada = malloc(n * sizeof(double));
-    for (int i = 1; i <= n + 1; i++)
-    {
-        matrizAumentada[i] = malloc(n * sizeof(double));
-    }
-
-    int j, i;
-    for (i = 1; i <= n; i++)
-    {
-        for (j = 1; j <= n; j++)
-        {
-            matrizAumentada[i][j] = matrizA[i][j];
-        }
-        matrizAumentada[i][j] = matrizB[i];
-    }
-
-    printarAumentada(matrizAumentada, n);
-
-    return matrizAumentada;
 }
 
 void resolverTriangular(double **matrizA, double *matrizB, int n)
@@ -126,28 +101,18 @@ void resolverTriangular(double **matrizA, double *matrizB, int n)
     }
 }
 
-void resolverGauss(double **matrizAumentada, int n)
+void resolverGauss(double **a, double *b, int or)
 {
-    //pivo
-    double pivo, multiplicador;
-
-    //multiplicador
-    for (int coluna = 1; coluna <= n + 1; coluna++)
+    int i, j, m, k;
+    for (i = 0; i < (or -1); i++)
     {
-        pivo = matrizAumentada[coluna][coluna];
-        printf("pivo: %f ", pivo);
-
-        for (int linha = coluna + 1; linha <= n; linha++)
+        for (j = i + 1; j <= or ; j++)
         {
-            multiplicador = (matrizAumentada[linha][coluna]) / pivo;
-            printf("multiplicador: %f ", multiplicador);
-            //multiplicar
-            int i = linha;
-            for (int j = 1; j <= n + 1; j++)
-            {
-                matrizAumentada[i][j] = matrizAumentada[i][j] - (multiplicador * pivo);
-            }
-            printarAumentada(matrizAumentada, n);
+            m = -((a[j][i]) / a[i][i]);
+            a[j][i] = 0;
+            for (k = i + 1; k <= or ; k++)
+                a[j][k] = a[j][k] + m * a[i][k];
+            b[j] = b[j] + m * b[i];
         }
     }
 }
@@ -159,9 +124,9 @@ int main()
 
     double **matrizA = alocaA(n);
     double *matrizB = alocaB(n);
-    double **matrizAumentada = alocaAumentada(n, matrizA, matrizB);
 
-    resolverGauss(matrizAumentada, n);
-    printarAumentada(matrizAumentada, n);
+    resolverGauss(matrizA, matrizB, n);
+    imprimir(matrizA, n);
     resolverTriangular(matrizA, matrizB, n);
+    imprimir(matrizA, n);
 }

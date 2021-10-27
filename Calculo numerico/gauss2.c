@@ -143,9 +143,15 @@ void resolverGauss(double **matrizAumentada, int n)
             printf("multiplicador: %f ", multiplicador);
             //multiplicar
             int i = linha;
+            int controle = 1;
             for (int j = 1; j <= n + 1; j++)
             {
-                matrizAumentada[i][j] = matrizAumentada[i][j] - (multiplicador * pivo);
+                if ((matrizAumentada[i][j]) == 0)
+                {
+                    controle = 0;
+                }
+                matrizAumentada[i][j] = matrizAumentada[i][j] - (multiplicador * pivo) * controle;
+                controle = 1;
             }
             printarAumentada(matrizAumentada, n);
         }
