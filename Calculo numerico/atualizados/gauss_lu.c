@@ -1,132 +1,175 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void lerA(double **matrizA, int n, double **L)
+double *vetor(int ordem)
 {
-    for (int i = 0; i < n; i++)
+    double *vetorX;
+
+    vetorX = malloc(ordem * sizeof(double));
+    return vetorX;
+}
+
+double **matriz(int ordem)
+{
+    int i;
+    double **matrizA;
+
+    matrizA = malloc(ordem * sizeof(double *));
+    for (i = 0; i < ordem; i++)
+        matrizA[i] = malloc(ordem * sizeof(double));
+
+    return matrizA;
+}
+
+void ler(double **matrizA, int ordem)
+{
+    int i, j;
+
+    for (i = 0; i < ordem; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (j = 0; j < ordem; j++)
         {
             scanf("%lf", &matrizA[i][j]);
-
-            if (i == j)
-            {
-                L[i][j] = 1;
-            }
-            else
-            {
-                L[i][j] = 0;
-            }
         }
     }
 }
 
-void lerB(double *vetorB, int n)
+void trocar(double **matrizA, int ordem, double **aux)
 {
-    for (int i = 0; i < n; i++)
+    int i, j, k;
+    double pivo;
+
+    for (k = 0; k < ordem - 1; k++)
     {
-        scanf("%lf", &vetorB[i]);
+        for (i = k + 1; i < ordem; i++)
+        {
+            pivo = -matrizA[i][k] / matrizA[k][k];
+            for (j = 0; j < ordem; j++)
+            {
+                matrizA[i][j + k] += (pivo * matrizA[k][j + k]);
+            }
+            aux[i][k] = pivo * -1;
+        }
+    }
+
+    for (i = 0; i < ordem; i++)
+    {
+        for (j = 0; j < ordem; j++)
+        {
+            if (i == j)
+                aux[i][j] = 1;
+        }
     }
 }
 
-void printar(double *vetorX, int n)
+double somaX(int i, int ordem, double **matrizA, double *vetorX)
 {
-    printf("Resposta:\n");
-    for (int i = 0; i < n; i++)
+    int j;
+    double soma = 0;
+
+    for (j = i + 1; j < ordem; j++)
+        soma += matrizA[i][j] * vetorX[j];
+
+    return soma;
+}
+
+double somaY(int i, int ordem, double **matrizA, double *vetorX)
+{
+    int j;
+    double soma = 0;
+
+    for (j = i - 1; j >= 0; j--)
+        soma += matrizA[i][j] * vetorX[j];
+
+    return soma;
+}
+
+void resultY(double **var, double *vetorY, int i, int ordem, double *vetorB)
+{
+    if (i < ordem)
     {
-        printf("%lf\n", vetorX[i]);
+        vetorY[i] = ((vetorB[i] - somaY(i, ordem, var, vetorY)) / var[i][i]);
+        printf("vetorY[%d] = %.4lf\n", i, vetorY[i]);
+        resultY(var, vetorY, i + 1, ordem, vetorB);
     }
 }
 
-double somaY(double **L, double *vetorY, int i, int n, int constante)
+void resultado(double **matrizA, double *vetorX, int i, int ordem, double *vetorB)
 {
-    if (i == 0)
-    {
-        return 0;
-    }
 
-    else
+    if (i >= 0)
     {
-        double res = L[constante][i - 1] * vetorY[i - 1] + somaY(L, vetorY, i - 1, n, constante);
-        return res;
+        vetorX[i] = ((vetorB[i] - somaX(i, ordem, matrizA, vetorX)) / matrizA[i][i]);
+        resultado(matrizA, vetorX, i - 1, ordem, vetorB);
+        printf("vetorX[%d] = %.4lf\n", i, vetorX[i]);
     }
 }
 
-double somaX(double **matrizA, double *vetorX, int i, int n, int constante)
+void decompor(double **matrizA, double *vetorB, double *vetorX, double *vetorY, double **m, int n, int ordem)
 {
-    if (i + 1 == n)
+    int i, j, k;
+    do
     {
-        return 0;
-    }
+        for (i = 0; i < ordem; i++)
+        {
+            scanf("%lf", &vetorB[i]);
+        }
 
-    else
-    {
-        double res = matrizA[constante][i + 1] * vetorX[i + 1] + somaX(matrizA, vetorX, i + 1, n, constante);
-        return res;
-    }
-}
+        printf("\nL:\n");
+        for (i = 0; i < ordem; i++)
+        {
+            for (j = 0; j < ordem; j++)
+                printf("%lf ", m[i][j]);
+            printf("\n");
+        }
+        printf("\n");
 
-void triangularY(double **L, double *vetorB, double *vetorX, int n, double *vetorY)
-{
-    for (int i = 0; i < n; i++)
-    {
-        vetorY[i] = (vetorB[i] - somaY(L, vetorY, i, n, i)) / L[i][i];
-    }
-}
+        printf("\nU:\n");
+        for (i = 0; i < ordem; i++)
+        {
+            for (j = 0; j < ordem; j++)
+                printf("%.2lf ", matrizA[i][j]);
+            printf("\n");
+        }
+        printf("\n");
 
-void triangularX(double **matrizA, double *vetorB, double *vetorX, int n, double *vetorY)
-{
-    for (int i = n - 1; i >= 0; i--)
-    {
-        vetorX[i] = (vetorY[i] - somaX(matrizA, vetorX, i, n, i)) / matrizA[i][i];
-    }
+        resultY(m, vetorY, 0, ordem, vetorB);
+        printf("\n");
+        resultado(matrizA, vetorX, ordem - 1, ordem, vetorY);
+        printf("\n");
+
+        for (i = 0; i < ordem; i++)
+            printf("vetorB = %lf\n", vetorB[i]);
+
+        printf("\n1 para sair\n");
+        scanf("%d", &n);
+    } while (n != 1);
 }
 
 int main()
 {
-    int n, i, j, k, op;
-    scanf("%d", &n);
+    int i, j, n = 0, ordem;
+    double *vetorX, *vetorY, **m, **matrizA, *vetorB;
 
-    double **matrizA = malloc(n * sizeof(double));
-    for (int i = 0; i < n; i++)
+    scanf("%d", &ordem);
+
+    matrizA = matriz(ordem);
+    m = matriz(ordem);
+
+    vetorX = vetor(ordem);
+    vetorB = vetor(ordem);
+    vetorY = vetor(ordem);
+
+    ler(matrizA, ordem);
+
+    //preencher
+    for (i = 0; i < ordem; i++)
     {
-        matrizA[i] = malloc(n * sizeof(double));
+        for (j = 0; j < ordem; j++)
+            m[i][j] = 0;
     }
 
-    double **L = malloc(n * sizeof(double));
-    for (int i = 0; i < n; i++)
-    {
-        L[i] = malloc(n * sizeof(double));
-    }
+    trocar(matrizA, ordem, m);
 
-    double *vetorB = malloc(n * sizeof(double));
-    double *vetorX = malloc(n * sizeof(double));
-    double *vetorY = malloc(n * sizeof(double));
-
-    lerA(matrizA, n, L);
-
-    for (i = 0; i < n - 1; i++)
-    {
-        for (j = i + 1; j < n; j++)
-        {
-            L[j][i] = matrizA[j][i] / matrizA[i][i];
-            for (k = 0; k < n; k++)
-            {
-                matrizA[j][k] = matrizA[j][k] - L[j][i] * matrizA[i][k];
-            }
-        }
-    }
-
-    do
-    {
-        lerB(vetorB, n);
-
-        triangularY(L, vetorB, vetorX, n, vetorY);
-        triangularX(matrizA, vetorB, vetorX, n, vetorY);
-
-        printf("Digite 1 para sair");
-        scanf("%d", &op);
-    } while (op != 1);
-
-    printar(vetorX, n);
+    decompor(matrizA, vetorB, vetorX, vetorY, m, n, ordem);
 }
