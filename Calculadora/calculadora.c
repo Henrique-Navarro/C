@@ -12,7 +12,6 @@ void juros_simples()
 {
     double juros, capital, taxa, tempo, montante;
     int op;
-
     do
     {
         printf("\nO que voce quer achar?\n0-sair\n1-juros\n2-capital\n3-taxa\n4-tempo\n5-montante\n");
@@ -175,11 +174,92 @@ void juros_compostos()
     } while (op != 0);
 }
 
+void area()
+{
+    printf("\n1-Quadrado\n2-Retangulo\n3-Triangulo\n4-Circulo\n5-Losangulo\n6-Trapezio\n");
+    printf("\n7-Cubo\n8-Piramide\n9-Cone\n10-Cilindro\n11-Prisma\n12-Esfera");
+}
+
+void expressao()
+{
+    double a, b, c, x, y, delta;
+    printf("\nDigite os coeficientes:\n");
+    scanf("%lf %lf %lf", &a, &b, &c);
+
+    delta = (pow(b, 2) - (4 * a * c));
+    x = ((-b + sqrt(delta)) / (2 * a));
+    y = ((-b - sqrt(delta)) / (2 * a));
+    printf("x1: %.2lf\nx2: %.2lf\n", x, y);
+}
+
+void fatorial()
+{
+    int numero;
+
+    printf("\nQual numero vc quer o fatorial?\n");
+    scanf("%d", &numero);
+
+    for (int i = numero - 1; i >= 1; i--)
+    {
+        numero *= i;
+    }
+    printf("%d", numero);
+}
+
+void velocidade()
+{
+    double posicaoI, posicaoF, tempoI, tempoF, velocidadeMed;
+    int op;
+    do
+    {
+        printf("\nO que voce quer achar?\n[ 0 ] - sair\n[ 1 ] - velocidade media\n[ 2 ] - variacao distancia\n[ 3 ] - variacao tempo\n[ 4 ] - m/s -> km/h\n[ 5 ] - km/h -> m/s\n");
+        scanf("%d", &op);
+
+        switch (op)
+        {
+        case 0:
+            break;
+
+        //velocidade
+        case 1:
+            printf("\nQuanto e a posicao inicial e a posicao final? [m]\n");
+            scanf("%lf %lf", &posicaoI, &posicaoF);
+
+            printf("\nQuanto e o tempo inicial e o tempo final? [s]\n");
+            scanf("%lf %lf", &tempoI, &tempoF);
+
+            velocidadeMed = ((posicaoF - posicaoI) / (tempoF - tempoI));
+            printf("\nA velocidade media e de: m/s", velocidadeMed);
+            break;
+
+        //distancia
+        case 2:
+
+        //tempo
+        case 3:
+
+        //m/s -> km/h
+        case 4:
+            printf("\nA velocidade media e de: %.2lf km/h\n", velocidadeMed * 3.6);
+            break;
+
+        //km/h -> m/s
+        case 5:
+            printf("\nA velocidade media e de: %.2lf m/s\n", velocidadeMed / 3.6);
+            break;
+
+        default:
+            break;
+        }
+    } while (op != 0);
+}
+
 int main()
 {
     int op;
 
-    printf("\n1-juros simples\n2-juros compostos\n");
+    printf("\n[ 1 ] - juros simples\n[ 2 ] - juros compostos\n[ 3 ] - unidades de medida\n[ 4 ] - area\n[ 5 ] - volume\n[ 6 ] - expressao 2 grau\n[ 7 ] - fatorial\n");
+    printf("[ 8 ] - velocidade\n");
     scanf("%d", &op);
     switch (op)
     {
@@ -188,6 +268,21 @@ int main()
 
     case 2:
         juros_compostos();
+
+    case 4:
+        area();
+
+        //case 5:
+        //  volume();
+
+    case 6:
+        expressao();
+
+    case 7:
+        fatorial();
+
+    case 8:
+        velocidade();
 
     default:
         break;
