@@ -180,18 +180,21 @@ void area()
     int op;
     do
     {
-        printf("\n1-Quadrado\n2-Retangulo\n3-Triangulo\n4-Circulo\n5-Losango\n6-Trapezio\n");
-        printf("\n7-Cubo\n8-Piramide\n9-Cone\n10-Cilindro\n11-Prisma\n12-Esfera");
+        printf("\n\n\n[ 1  ] - Quadrado\n[ 2  ] - Retangulo\n[ 3  ] - Triangulo\n[ 4  ] - Circulo\n[ 5  ] - Losango\n[ 6  ] - Trapezio");
+        printf("\n[ 7  ] - Cubo\n[ 8  ] - Piramide\n[ 9  ] - Cone\n[ 10 ] - Cilindro\n[ 11 ] - Prisma\n[ 12 ] - Esfera\n");
         scanf("%d", &op);
 
         switch (op)
         {
+        case 0:
+            break;
+
         //quadrado
         case 1:
             printf("Digite o valor do lado: \n");
             scanf("%lf", &lado);
             area = lado * lado;
-            printf("Area do quadrado: %lf", area);
+            printf("Area do quadrado: %.2lf", area);
             break;
 
         //retangulo
@@ -201,7 +204,7 @@ void area()
             printf("Digite o valor da base: \n");
             scanf("%lf", &base);
             area = lado * base;
-            printf("Area do retangulo: %lf", area);
+            printf("Area do retangulo: %.2lf", area);
             break;
 
         //triangulo
@@ -211,7 +214,7 @@ void area()
             printf("Digite o valor da base: \n");
             scanf("%lf", &altura);
             area = (base * altura) / 2;
-            printf("Area do triangulo: %lf", area);
+            printf("Area do triangulo: %.2lf", area);
             break;
 
         //circulo
@@ -219,7 +222,7 @@ void area()
             printf("Digite o valor do raio: \n");
             scanf("%lf", &raio);
             area = 3.1415926535 * (pow(raio, 2));
-            printf("Area do circulo: %lf", area);
+            printf("Area do circulo: %.2lf", area);
             break;
 
         //losango
@@ -229,7 +232,7 @@ void area()
             printf("Digite o valor da diagonal Menor: \n");
             scanf("%lf", &altura);
             area = (base * altura) / 2;
-            printf("Area do losango: %lf", area);
+            printf("Area do losango: %.2lf", area);
             break;
 
         //trapezio
@@ -241,7 +244,7 @@ void area()
             printf("Digite o valor da altura: \n");
             scanf("%lf", &altura);
             area = ((base + lado) * altura) / 2;
-            printf("Area do trapezio: %lf", area);
+            printf("Area do trapezio: %.2lf", area);
             break;
 
         //cubo
@@ -253,7 +256,7 @@ void area()
             printf("Digite o valor da altura: \n");
             scanf("%lf", &altura);
             area = base * altura * lado;
-            printf("Area do cubo: %lf", area);
+            printf("Area do cubo: %.2lf", area);
             break;
 
         //piramide
@@ -265,6 +268,7 @@ void area()
             g = sqrt((pow((base / 2), 2)) + (pow(altura, 2)));
             //area base(quadrado) + area lado(triangulo)
             area = ((base * base) + ((base * g) / 2) * 4);
+            printf("Area da piramide: %.2lf", area);
             break;
 
             //cone
@@ -288,7 +292,7 @@ void area()
             break;
         }*/
         }
-    }
+    } while (op != 0);
 }
 
 void expressao()
