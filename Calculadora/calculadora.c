@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <math.h>
 
+double printar(double valor)
+{
+    printf("%.2lf\n", valor);
+}
+
 double logBase(double logaritmando, double base)
 {
     return (log(logaritmando) / log(base));
@@ -34,7 +39,8 @@ void juros_simples()
             scanf("%lf", &tempo);
 
             juros = capital * (taxa / 100) * tempo;
-            printf("\n\nJuros com valor de:\n%.2lf\n", juros);
+            printf("\n\nJuros com valor de: ");
+            printar(juros);
             break;
 
         //capital
@@ -49,7 +55,8 @@ void juros_simples()
             scanf("%lf", &tempo);
 
             capital = juros / ((taxa / 100) * tempo);
-            printf("\n\nCapital com valor de:\n%.2lf\n", capital);
+            printf("\n\nCapital com valor de: ");
+            printar(capital);
             break;
 
         //taxa
@@ -64,7 +71,8 @@ void juros_simples()
             scanf("%lf", &tempo);
 
             taxa = juros / (capital * tempo);
-            printf("\n\nTaxa com valor de:\n%.2lf\n", taxa);
+            printf("\n\nTaxa com valor de: ");
+            printar(taxa);
             break;
 
         //tempo
@@ -79,14 +87,16 @@ void juros_simples()
             scanf("%lf", &taxa);
 
             tempo = juros / (capital * taxa / 100);
-            printf("\n\nTempo com valor de:\n%.2lf\n", tempo);
+            printf("\n\nTempo com valor de: ");
+            printar(tempo);
             break;
 
         //montante
         case 5:
             montante = (capital * taxa / 100 * tempo) + capital;
 
-            printf("\n\nMontante com valor de:\n%.2lf\n", montante);
+            printf("\n\nMontante com valor de: ");
+            printar(montante);
 
         default:
             break;
@@ -119,7 +129,8 @@ void juros_compostos()
             scanf("%lf", &tempo);
 
             montante = capital * (pow(1 + taxa / 100, tempo));
-            printf("\n\nMontante com valor de:\n%.2lf\n", montante);
+            printf("\n\nMontante com valor de: ");
+            printar(montante);
             break;
 
         //capital
@@ -134,7 +145,8 @@ void juros_compostos()
             scanf("%lf", &tempo);
 
             capital = montante / (pow(1 + taxa / 100, tempo));
-            printf("\n\nCapital com valor de:\n%.2lf\n", capital);
+            printf("\n\nCapital com valor de: ");
+            printar(capital);
             break;
 
         //taxa
@@ -149,7 +161,8 @@ void juros_compostos()
             scanf("%lf", &tempo);
 
             taxa = (pow(montante / capital, 1 / tempo)) - 1;
-            printf("\n\nTaxa com valor de:\n%.2lf\n", taxa);
+            printf("\n\nTaxa com valor de: ");
+            printar(taxa);
             break;
 
         //tempo
@@ -165,7 +178,8 @@ void juros_compostos()
 
             //log - base
             tempo = logBase(montante / capital, 1 + taxa / 100);
-            printf("\n\nTempo com valor de:\n%.2lf\n", tempo);
+            printf("\n\nTempo com valor de: ");
+            printar(tempo);
             break;
 
         default:
@@ -194,7 +208,8 @@ void area()
             printf("Digite o valor do lado: \n");
             scanf("%lf", &lado);
             area = lado * lado;
-            printf("Area do quadrado: %.2lf", area);
+            printf("Area do quadrado: ");
+            printar(area);
             break;
 
         //retangulo
@@ -204,7 +219,8 @@ void area()
             printf("Digite o valor da base: \n");
             scanf("%lf", &base);
             area = lado * base;
-            printf("Area do retangulo: %.2lf", area);
+            printf("Area do retangulo: ");
+            printar(area);
             break;
 
         //triangulo
@@ -214,7 +230,8 @@ void area()
             printf("Digite o valor da base: \n");
             scanf("%lf", &altura);
             area = (base * altura) / 2;
-            printf("Area do triangulo: %.2lf", area);
+            printf("Area do triangulo: ");
+            printar(area);
             break;
 
         //circulo
@@ -222,7 +239,8 @@ void area()
             printf("Digite o valor do raio: \n");
             scanf("%lf", &raio);
             area = 3.1415926535 * (pow(raio, 2));
-            printf("Area do circulo: %.2lf", area);
+            printf("Area do circulo: ");
+            printar(area);
             break;
 
         //losango
@@ -232,7 +250,8 @@ void area()
             printf("Digite o valor da diagonal Menor: \n");
             scanf("%lf", &altura);
             area = (base * altura) / 2;
-            printf("Area do losango: %.2lf", area);
+            printf("Area do losango: ");
+            printar(area);
             break;
 
         //trapezio
@@ -244,7 +263,8 @@ void area()
             printf("Digite o valor da altura: \n");
             scanf("%lf", &altura);
             area = ((base + lado) * altura) / 2;
-            printf("Area do trapezio: %.2lf", area);
+            printf("Area do trapezio: ");
+            printar(area);
             break;
 
         //cubo
@@ -256,7 +276,8 @@ void area()
             printf("Digite o valor da altura: \n");
             scanf("%lf", &altura);
             area = base * altura * lado;
-            printf("Area do cubo: %.2lf", area);
+            printf("Area do cubo: ");
+            printar(area);
             break;
 
         //piramide
@@ -268,7 +289,8 @@ void area()
             g = sqrt((pow((base / 2), 2)) + (pow(altura, 2)));
             //area base(quadrado) + area lado(triangulo)
             area = ((base * base) + ((base * g) / 2) * 4);
-            printf("Area da piramide: %.2lf", area);
+            printf("Area da piramide: ");
+            printar(area);
             break;
 
             //cone
@@ -344,7 +366,8 @@ void velocidade()
             scanf("%lf %lf", &tempoI, &tempoF);
 
             velocidadeMed = ((posicaoF - posicaoI) / (tempoF - tempoI));
-            printf("\nA velocidade media e de: m/s", velocidadeMed);
+            printf("\nA velocidade media e de: ");
+            printar(velocidadeMed);
             break;
 
         //distancia
@@ -355,12 +378,14 @@ void velocidade()
 
         //m/s -> km/h
         case 4:
-            printf("\nA velocidade media e de: %.2lf km/h\n", velocidadeMed * 3.6);
+            printf("\nA velocidade media e de: ");
+            printar(velocidadeMed * 3.6);
             break;
 
         //km/h -> m/s
         case 5:
-            printf("\nA velocidade media e de: %.2lf m/s\n", velocidadeMed / 3.6);
+            printf("\nA velocidade media e de: ");
+            printar(velocidadeMed / 3.6);
             break;
 
         default:
