@@ -293,9 +293,15 @@ void area()
             printar(area);
             break;
 
-            //cone
-            /*case 9:
-
+        //cone
+        case 9:
+            printf("Digite o valor da base: \n");
+            scanf("%lf", &base);
+            printf("Digite o valor da altura: \n");
+            scanf("%lf", &altura);
+            g = sqrt((pow((base / 2), 2)) + (pow(altura, 2)));
+            area = ((3.141592 * (base / 2) * ((base / 2) + g)));
+            printar(area);
             break;
 
         //cilindro
@@ -312,8 +318,8 @@ void area()
         case 12:
 
             break;
-        }*/
         }
+
     } while (op != 0);
 }
 
