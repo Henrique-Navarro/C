@@ -203,6 +203,7 @@ void area()
         case 0:
             break;
 
+        //! figuras planas
         //quadrado
         case 1:
             printf("Digite o valor do lado: \n");
@@ -267,6 +268,7 @@ void area()
             printar(area);
             break;
 
+        //! figuras espaciais
         //cubo
         case 7:
             printf("Digite o valor da base: \n");
@@ -416,7 +418,7 @@ int main()
     int op;
 
     printf("\n[ 1 ] - juros simples\n[ 2 ] - juros compostos\n[ 3 ] - unidades de medida\n[ 4 ] - area\n[ 5 ] - volume\n[ 6 ] - expressao 2 grau\n[ 7 ] - fatorial\n");
-    printf("[ 8 ] - velocidade\n");
+    printf("[ 8 ] - velocidade\n[ 9 ] - conversoes");
     scanf("%d", &op);
     switch (op)
     {
@@ -440,6 +442,10 @@ int main()
 
     case 8:
         velocidade();
+
+        //TODO case 9:
+        //conversao();
+        //http://conversordemedidas.info
 
     default:
         break;
