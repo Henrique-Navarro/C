@@ -315,14 +315,17 @@ void area()
             printar(area);
             break;
 
-        //prisma
+        //TODO prisma
         case 11:
 
             break;
 
         //esfera
         case 12:
-
+            printf("Digite o valor do raio: \n");
+            scanf("%lf", &raio);
+            area = 4 * 3.1415 * pow(raio, 2);
+            printar(area);
             break;
         }
 
@@ -339,6 +342,8 @@ void expressao()
     x = ((-b + sqrt(delta)) / (2 * a));
     y = ((-b - sqrt(delta)) / (2 * a));
     printf("x1: %.2lf\nx2: %.2lf\n", x, y);
+
+    //TODO X vertice Y vertice
 }
 
 void fatorial()
@@ -382,10 +387,10 @@ void velocidade()
             printar(velocidadeMed);
             break;
 
-        //distancia
+        //TODO distancia
         case 2:
 
-        //tempo
+        //TODO tempo
         case 3:
 
         //m/s -> km/h
@@ -424,7 +429,7 @@ int main()
     case 4:
         area();
 
-        //case 5:
+        //TODO case 5:
         //  volume();
 
     case 6:
