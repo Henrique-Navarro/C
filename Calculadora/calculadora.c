@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
-double printar(double valor)
+void printar(double valor)
 {
     printf("%.2lf\n", valor);
 }
@@ -13,7 +13,7 @@ double logBase(double logaritmando, double base)
 }
 
 //criar variável de controle para não pedir os resultados toda vez
-void juros_simples()
+double juros_simples()
 {
     double juros, capital, taxa, tempo, montante;
     int op;
@@ -41,6 +41,7 @@ void juros_simples()
             juros = capital * (taxa / 100) * tempo;
             printf("\n\nJuros com valor de: ");
             printar(juros);
+            return juros;
             break;
 
         //capital
@@ -57,6 +58,7 @@ void juros_simples()
             capital = juros / ((taxa / 100) * tempo);
             printf("\n\nCapital com valor de: ");
             printar(capital);
+            return capital;
             break;
 
         //taxa
@@ -73,6 +75,7 @@ void juros_simples()
             taxa = juros / (capital * tempo);
             printf("\n\nTaxa com valor de: ");
             printar(taxa);
+            return taxa;
             break;
 
         //tempo
@@ -89,6 +92,7 @@ void juros_simples()
             tempo = juros / (capital * taxa / 100);
             printf("\n\nTempo com valor de: ");
             printar(tempo);
+            return tempo;
             break;
 
         //montante
@@ -97,6 +101,7 @@ void juros_simples()
 
             printf("\n\nMontante com valor de: ");
             printar(montante);
+            return montante;
 
         default:
             break;
@@ -104,7 +109,7 @@ void juros_simples()
     } while (op != 0);
 }
 
-void juros_compostos()
+double juros_compostos()
 {
     double montante, capital, taxa, tempo, juros;
     int op;
@@ -188,7 +193,7 @@ void juros_compostos()
     } while (op != 0);
 }
 
-void area()
+double area()
 {
     double lado, base, altura, raio, area, g;
     int op;
@@ -211,6 +216,7 @@ void area()
             area = lado * lado;
             printf("Area do quadrado: ");
             printar(area);
+            return area;
             break;
 
         //retangulo
@@ -222,6 +228,7 @@ void area()
             area = lado * base;
             printf("Area do retangulo: ");
             printar(area);
+            return area;
             break;
 
         //triangulo
@@ -233,6 +240,7 @@ void area()
             area = (base * altura) / 2;
             printf("Area do triangulo: ");
             printar(area);
+            return area;
             break;
 
         //circulo
@@ -242,6 +250,7 @@ void area()
             area = 3.1415926535 * (pow(raio, 2));
             printf("Area do circulo: ");
             printar(area);
+            return area;
             break;
 
         //losango
@@ -253,6 +262,7 @@ void area()
             area = (base * altura) / 2;
             printf("Area do losango: ");
             printar(area);
+            return area;
             break;
 
         //trapezio
@@ -266,6 +276,7 @@ void area()
             area = ((base + lado) * altura) / 2;
             printf("Area do trapezio: ");
             printar(area);
+            return area;
             break;
 
         //! figuras espaciais
@@ -280,6 +291,7 @@ void area()
             area = base * altura * lado;
             printf("Area do cubo: ");
             printar(area);
+            return area;
             break;
 
         //piramide
@@ -293,6 +305,7 @@ void area()
             area = ((base * base) + ((base * g) / 2) * 4);
             printf("Area da piramide: ");
             printar(area);
+            return area;
             break;
 
         //cone
@@ -304,6 +317,7 @@ void area()
             g = sqrt((pow((base / 2), 2)) + (pow(altura, 2)));
             area = ((3.141592 * (base / 2) * ((base / 2) + g)));
             printar(area);
+            return area;
             break;
 
         //cilindro
@@ -315,11 +329,12 @@ void area()
             //area lateral + area base
             area = ((2 * 3.141592 * altura * (base / 2)) + (2 * 3.141592 * pow(base / 2, 2)));
             printar(area);
+            return area;
             break;
 
         //TODO prisma
         case 11:
-
+            return area;
             break;
 
         //esfera
@@ -328,9 +343,80 @@ void area()
             scanf("%lf", &raio);
             area = 4 * 3.1415 * pow(raio, 2);
             printar(area);
+            return area;
             break;
         }
 
+    } while (op != 0);
+}
+
+//! testar
+double volume()
+{
+    double lado, base, altura, raio, volume, g;
+    int op;
+    do
+    {
+        printf("\n[ 1 ] - Cubo\n[ 2 ] - Piramide\n[ 3 ] - Cone\n[ 4 ] - Cilindro\n[ 5 ] - Prisma\n[ 6 ] - Esfera\n");
+        scanf("%d", &op);
+        switch (op)
+        {
+        case 0:
+            break;
+
+        //cubo
+        case 1:
+            printf("Digite o valor do lado: \n");
+            scanf("%lf", &lado);
+            volume = pow(lado, 3);
+            printf("Volume do cubo: ");
+            printar(volume);
+            break;
+
+        //TODO piramide
+        case 2:
+
+            break;
+
+        //cone
+        case 3:
+            printf("Digite o valor da base: \n");
+            scanf("%lf", &base);
+            printf("Digite o valor da altura: \n");
+            scanf("%lf", &altura);
+            volume = (3.141592 * pow((base / 2), 2) * altura) / 3;
+            printf("Volume do cone: ");
+            printar(volume);
+            break;
+
+        //cilindro
+        case 4:
+            printf("Digite o valor da base: \n");
+            scanf("%lf", &base);
+            printf("Digite o valor da altura: \n");
+            scanf("%lf", &altura);
+            volume = (3.141592 * pow((base / 2), 2) * altura);
+            printf("Volume do cilindro: ");
+            printar(volume);
+            break;
+
+        //TODO prisma
+        case 5:
+
+            break;
+
+        //esfera
+        case 6:
+            printf("Digite o valor da base: \n");
+            scanf("%lf", &base);
+            volume = (4 / 3) * 3.141592 * pow((base / 2), 3);
+            printf("Volume da esfera: ");
+            printar(volume);
+            break;
+
+        default:
+            break;
+        }
     } while (op != 0);
 }
 
@@ -416,6 +502,7 @@ void velocidade()
 int main()
 {
     int op;
+    double a;
 
     printf("\n[ 1 ] - juros simples\n[ 2 ] - juros compostos\n[ 3 ] - unidades de medida\n[ 4 ] - area\n[ 5 ] - volume\n[ 6 ] - expressao 2 grau\n[ 7 ] - fatorial\n");
     printf("[ 8 ] - velocidade\n[ 9 ] - conversoes");
@@ -423,16 +510,16 @@ int main()
     switch (op)
     {
     case 1:
-        juros_simples();
+        a = juros_simples();
 
     case 2:
-        juros_compostos();
+        a = juros_compostos();
 
     case 4:
-        area();
+        a = area();
 
-        //TODO case 5:
-        //  volume();
+    case 5:
+        a = volume();
 
     case 6:
         expressao();
