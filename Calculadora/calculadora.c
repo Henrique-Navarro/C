@@ -434,6 +434,3 @@ int main()
         break;
     }
 }
-
-//teste louco
-//:)
