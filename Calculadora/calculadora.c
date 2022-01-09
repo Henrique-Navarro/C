@@ -306,7 +306,13 @@ void area()
 
         //cilindro
         case 10:
-
+            printf("Digite o valor da base: \n");
+            scanf("%lf", &base);
+            printf("Digite o valor da altura: \n");
+            scanf("%lf", &altura);
+            //area lateral + area base
+            area = ((2 * 3.141592 * altura * (base / 2)) + (2 * 3.141592 * pow(base / 2, 2)));
+            printar(area);
             break;
 
         //prisma
