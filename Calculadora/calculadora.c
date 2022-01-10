@@ -499,14 +499,74 @@ void velocidade()
     } while (op != 0);
 }
 
+//TODO
 int conversao()
 {
     int op;
     do
     {
         printf("O que vc deseja converter?\n");
-        printf("");
+        printf("[ 1 ] - Temperatura");
         scanf("%d", &op);
+
+        switch (op)
+        {
+        case 1:
+            temperatura;
+        }
+    } while (op != 0);
+}
+
+//TODO tipo double e printar
+void temperatura()
+{
+    double temperatura;
+    int op;
+    do
+    {
+        printf("[ 0 ] - Sair\n[ 1 ] - Kelvin -> Fahrenheit\n[ 2 ] - Kelvin -> Celsius\n[ 3 ] - Celsius -> Kelvin\n[ 4 ] - Celsius -> Fahrenheit\n[ 5 ] - Fahrenheit -> Kelvin\n[ 6 ] - Fahrenheit -> Celsius\n");
+        scanf("%d", &op);
+        printf("Digite a temperatura:\n");
+        scanf("%lf", &temperatura);
+        switch (op)
+        {
+        case 0:
+            break;
+
+        //Kelvin -> Fahrenheit
+        case 1:
+            temperatura = (((temperatura - 273) / 5) * 9) + 32;
+            printf("%.2lf\n", temperatura);
+
+        //Kelvin -> Celsius
+        case 2:
+            temperatura = (temperatura - 273);
+            printf("%.2lf\n", temperatura);
+
+        //Celsius -> Kelvin
+        case 3:
+            temperatura = temperatura + 273;
+            printf("%.2lf\n", temperatura);
+
+        //Celsius -> Fahrenheit
+        case 4:
+            temperatura = ((temperatura / 5) * 9) + 32;
+            printf("%.2lf\n", temperatura);
+
+        //Fahrenheit -> Kelvin
+        case 5:
+            temperatura = (((temperatura - 32) / 9) * 5) + 273;
+            printf("%.2lf\n", temperatura);
+
+        //Fahrenheit -> Celsius
+        case 6:
+            temperatura = ((temperatura - 32) / 9) * 5;
+            printf("%.2lf\n", temperatura);
+
+        default:
+
+            break;
+        }
     } while (op != 0);
 }
 
