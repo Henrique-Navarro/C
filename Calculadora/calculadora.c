@@ -499,6 +499,17 @@ void velocidade()
     } while (op != 0);
 }
 
+int conversao()
+{
+    int op;
+    do
+    {
+        printf("O que vc deseja converter?\n");
+        printf("");
+        scanf("%d", &op);
+    } while (op != 0);
+}
+
 int main()
 {
     int op;
@@ -530,8 +541,8 @@ int main()
     case 8:
         velocidade();
 
-        //TODO case 9:
-        //conversao();
+    case 9:
+        conversao();
         //http://conversordemedidas.info
 
     default:
