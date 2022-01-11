@@ -506,7 +506,7 @@ int conversao()
     do
     {
         printf("O que vc deseja converter?\n");
-        printf("[ 1 ] - Temperatura");
+        printf("[ 0 ] - sair\n[ 1 ] - Temperatura\n");
         scanf("%d", &op);
 
         switch (op)
