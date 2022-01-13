@@ -362,6 +362,7 @@ double volume()
         switch (op)
         {
         case 0:
+            return 0;
             break;
 
         //cubo
@@ -371,11 +372,13 @@ double volume()
             volume = pow(lado, 3);
             printf("Volume do cubo: ");
             printar(volume);
+            return volume;
             break;
 
         //TODO piramide
         case 2:
 
+            return volume;
             break;
 
         //cone
@@ -387,6 +390,7 @@ double volume()
             volume = (3.141592 * pow((base / 2), 2) * altura) / 3;
             printf("Volume do cone: ");
             printar(volume);
+            return volume;
             break;
 
         //cilindro
@@ -398,11 +402,13 @@ double volume()
             volume = (3.141592 * pow((base / 2), 2) * altura);
             printf("Volume do cilindro: ");
             printar(volume);
+            return volume;
             break;
 
         //TODO prisma
         case 5:
 
+            return volume;
             break;
 
         //esfera
@@ -412,6 +418,7 @@ double volume()
             volume = (4 / 3) * 3.141592 * pow((base / 2), 3);
             printf("Volume da esfera: ");
             printar(volume);
+            return volume;
             break;
 
         default:
@@ -615,7 +622,7 @@ int main()
     case 9:
         conversao();
         //http://conversordemedidas.info
-
+    
     default:
         break;
     }
