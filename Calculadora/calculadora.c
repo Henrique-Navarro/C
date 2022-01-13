@@ -518,7 +518,7 @@ int conversao()
 }
 
 //TODO tipo double e printar
-void temperatura()
+double temperatura()
 {
     double temperatura;
     int op;
@@ -536,35 +536,46 @@ void temperatura()
         //Kelvin -> Fahrenheit
         case 1:
             temperatura = (((temperatura - 273) / 5) * 9) + 32;
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         //Kelvin -> Celsius
         case 2:
             temperatura = (temperatura - 273);
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         //Celsius -> Kelvin
         case 3:
             temperatura = temperatura + 273;
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         //Celsius -> Fahrenheit
         case 4:
             temperatura = ((temperatura / 5) * 9) + 32;
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         //Fahrenheit -> Kelvin
         case 5:
             temperatura = (((temperatura - 32) / 9) * 5) + 273;
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         //Fahrenheit -> Celsius
         case 6:
             temperatura = ((temperatura - 32) / 9) * 5;
-            printf("%.2lf\n", temperatura);
+            printf("Temperatura convertida: ");
+            printar(temperatura);
+            return temperatura;
 
         default:
-
             break;
         }
     } while (op != 0);
