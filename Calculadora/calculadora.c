@@ -606,37 +606,99 @@ double temperatura()
 
 double tempo()
 {
-    int op,op2;
+    double tempo;
+    int op, op2;
 
     do
     {
         printf("O que vc deseja converter?\n");
-        printf("[ 1 ] - anos ->\n[ 2 ] - meses ->\n[ 3 ] - semanas -> \n[ 4 ] - dias ->\n[ 5 ] - horas\n[ 6 ] - minutos");
-        scanf("%d", &op);
         printf("[ 1 ] - anos ->\n[ 2 ] - meses ->\n[ 3 ] - semanas -> \n[ 4 ] - dias ->\n[ 5 ] - horas\n[ 6 ] - minutos\n[ 7 ] - segundos\n[ 8 ] - milisegundos\n[ 9 ] - microsegundos\n[ 10 ] - nanosegundos\n");
+        scanf("%d", &op);
+
+        printf("Digite o tempo:\n");
+        scanf("%lf", &tempo);
+
+        printf("[ 1 ] -> anos\n[ 2 ] -> meses\n[ 3 ] -> semanas\n[ 4 ] - dias\n[ 5 ] - horas\n[ 6 ] - minutos\n[ 7 ] - segundos\n[ 8 ] - milisegundos\n[ 9 ] - microsegundos\n[ 10 ] - nanosegundos\n");
         scanf("%d", &op2);
 
+        //criar função p n ficar tão grande
         switch (op)
         {
         case 0:
             break;
 
+        //anos
         case 1:
+            switch (op2)
+            {
+            //anos
+            case 1:
 
-        case 2:
+            //meses
+            case 2:
 
-        case 3:
+            //semanas
+            case 3:
 
-        case 4:
+            //dias
+            case 4:
 
-        case 5:
+            //horas
+            case 5:
 
-        case 6:
+            //minutos
+            case 6:
 
-        default:
-            break;
+            //segundos
+            case 7:
+
+            //milisegundos
+            case 8:
+
+            //microsegundos
+            case 9:
+
+            //microsegundos
+            case 10:
+
+            default:
+                break;
+            }
         }
-    } while (op != 0)
+
+    //meses
+    case 2:
+
+    //semanas
+    case 3:
+
+    //dias
+    case 4:
+
+    //horas
+    case 5:
+
+    //minutos
+    case 6:
+
+    //segundos
+    case 7:
+
+    //milisegundos
+    case 8:
+
+    //microsegundos
+    case 9:
+
+    //microsegundos
+    case 10:
+
+    default:
+        break;
+    }
+}
+while (op != 0)
+    ;
 }
 
 int main()
