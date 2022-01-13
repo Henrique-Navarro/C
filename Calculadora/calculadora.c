@@ -509,6 +509,7 @@ void velocidade()
 //TODO
 int conversao()
 {
+    double a;
     int op;
     do
     {
@@ -519,12 +520,26 @@ int conversao()
         switch (op)
         {
         case 1:
-            temperatura;
+            a = temperatura();
+
+        case 2:
+            a = tempo();
+
+        case 3:
+            a = massa();
+
+        case 4:
+            a = comprimento();
+
+        case 5:
+            a = pressao();
+
+        case 6:
+            a = moeda();
         }
     } while (op != 0);
 }
 
-//TODO tipo double e printar
 double temperatura()
 {
     double temperatura;
@@ -535,6 +550,7 @@ double temperatura()
         scanf("%d", &op);
         printf("Digite a temperatura:\n");
         scanf("%lf", &temperatura);
+
         switch (op)
         {
         case 0:
@@ -588,6 +604,41 @@ double temperatura()
     } while (op != 0);
 }
 
+double tempo()
+{
+    int op,op2;
+
+    do
+    {
+        printf("O que vc deseja converter?\n");
+        printf("[ 1 ] - anos ->\n[ 2 ] - meses ->\n[ 3 ] - semanas -> \n[ 4 ] - dias ->\n[ 5 ] - horas\n[ 6 ] - minutos");
+        scanf("%d", &op);
+        printf("[ 1 ] - anos ->\n[ 2 ] - meses ->\n[ 3 ] - semanas -> \n[ 4 ] - dias ->\n[ 5 ] - horas\n[ 6 ] - minutos\n[ 7 ] - segundos\n[ 8 ] - milisegundos\n[ 9 ] - microsegundos\n[ 10 ] - nanosegundos\n");
+        scanf("%d", &op2);
+
+        switch (op)
+        {
+        case 0:
+            break;
+
+        case 1:
+
+        case 2:
+
+        case 3:
+
+        case 4:
+
+        case 5:
+
+        case 6:
+
+        default:
+            break;
+        }
+    } while (op != 0)
+}
+
 int main()
 {
     int op;
@@ -622,7 +673,7 @@ int main()
     case 9:
         conversao();
         //http://conversordemedidas.info
-    
+
     default:
         break;
     }
