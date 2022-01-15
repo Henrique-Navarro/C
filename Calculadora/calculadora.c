@@ -696,9 +696,12 @@ double tempo()
     default:
         break;
     }
+
+    while (op != 0);
 }
-while (op != 0)
-    ;
+
+double pressao()
+{
 }
 
 int main()
