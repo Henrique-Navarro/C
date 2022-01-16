@@ -702,7 +702,6 @@ double tempo()
 
 double pressao()
 {
-    //não seiu oq fazer
 }
 
 int main()
