@@ -541,6 +541,7 @@ int conversao()
 }
 
 double temperatura()
+//vishh
 {
     double temperatura;
     int op;
