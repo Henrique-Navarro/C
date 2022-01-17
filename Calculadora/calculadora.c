@@ -703,7 +703,7 @@ double tempo()
 double pressao()
 {
 }
-
+//n sei oq mais
 int main()
 {
     int op;
